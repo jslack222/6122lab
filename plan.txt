@@ -1,0 +1,140 @@
+Brainstorming list 
+
+
+-- users -- 
+
+password - varchar(50)
+user_id - integer
+email - varchar(200)
+firstname - varchar(30)
+lastname - varchar(30)
+
+-- recipes --
+
+user_id - integer
+recipe_id  - integer
+ingredients - varchar(3000)
+instuctions - varchar(3000)
+is_public - boolean
+recipe - text
+
+-- occasions -- 
+occasion_id - integer
+occasion_name - varchar(200)
+occasion_description - text
+
+-- registry -- 
+
+registry_id - integer
+user_id - integer
+occasions_id - integer
+ingredients
+grocery_list_id
+
+-- grocery list --
+
+grocery_list_id - integer
+user_id - integer
+ingredients - varchar(3000)
+
+//RELATIONSHIPS//
+
+ONE TO ONE
+
+ONE TO MANY
+
+User to Recipe: one user can have many recipes. 
+User to Grocery list: one user can have many recipes. 
+User to Occasions: One user can have many occasions. 
+
+MANY TO MANY
+
+
+
+
+//COLUMNS//
+
+USERS
+
+user_id : SERIAL PRIMARY KEY
+username : VARCHAR(50)
+first_name : VARCHAR(50)
+last_name : VARCHAR(50)
+email : VARCHAR(100)
+password : VARCHAR(100)
+
+RECIPES
+
+recipe_id : SERIAL PRIMARY KEY
+user_id : INT 
+ingredients : TEXT(1000)
+instructions : TEXT(5000)
+is_public : BOOLEAN
+
+OCCASIONS
+
+occasions_id : SERIAL PRIMARY KEY
+user_id : INT
+recipe_id : INT
+occasions_description : TEXT(200)
+
+GROCERY LIST
+
+grocery_list_id : SERIAL PRIMARY KEY
+user_id : INT
+ingredients : TEXT(1000)
+
+REGISTRY
+
+registry_id : SERIAL PRIMARY KEY
+user_id : INT
+recipe_id : INT
+occasions_id : INT
+grocery_list_id : INT
+ingredients : TEXT(1000)
+
+
+-- CREATE TABLE users (
+--   user_id SERIAL PRIMARY KEY, 
+--   username VARCHAR (30), 
+--   first_name VARCHAR (30), 
+--   last_name VARCHAR (30), 
+--   email VARCHAR (100), 
+--   password VARCHAR (100)
+--   ); 
+  
+--  CREATE TABLE recipes (
+--    recipe_id SERIAL PRIMARY KEY, 
+--    user_id INT NOT NULL REFERENCES users(users_id), 
+--    ingredients TEXT, 
+--    instructions TEXT, 
+--    is_public BOOLEAN 
+--     ); 
+    
+--  CREATE TABLE occasions (
+--    occasions_id SERIAL PRIMARY KEY, 
+--    user_id INT NOT NULL REFERENCES users(users_id), 
+--    recipe_id INT NOT NULL REFERENCES recipes(recipe_id), 
+--    occasions_description TEXT(200)
+--     ); 
+ 
+--  CREATE TABLE ingredients ( 
+--    ingredients_id SERIAL PRIMARY KEY, 
+--    ingredients_list TEXT NOT NULL 
+--    ); 
+   
+--  CREATE TABLE grocery_list (
+--     grocery_list_id SERIAL PRIMARY KEY,
+--     user_id INT NOT NULL REFERENCES users(user_id),
+--     ingredients_id INT NOT NULL REFERENCES ingredients(ingredients_id)
+--     );
+    
+--   CREATE TABLE registry (
+--     registry_id SERIAL PRIMARY KEY,
+--     user_id INT NOT NULL REFERENCES users(user_id),
+--     recipe_id INT NOT NULL REFERENCES recipes(recipe_id),
+--     ingredients_id INT NOT NULL REFERENCES ingredients(ingredients_id),
+--     occasion_id INT NOT NULL REFERENCES occasions(occasion_id),
+--     grocery_list_id INT NOT NULL REFERENCES grocery_list(grocery_list_id)
+--     );
+
